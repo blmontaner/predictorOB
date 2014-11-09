@@ -50,7 +50,7 @@ class EncoderService {
             KeyStore ks = KeyStore.getInstance("PKCS12");
 
             // In testing, point this at the key file downloaded from google
-            FileInputStream fis = new FileInputStream("grails-app/resources/My Project-6269d3aa75f0.p12");
+            FileInputStream fis = new FileInputStream("grails-app/resources/My Project-43a15e5936c3.p12");
             ks.load(fis, "notasecret".toCharArray());
 
             // get my private key from the kestore (.p12 file)

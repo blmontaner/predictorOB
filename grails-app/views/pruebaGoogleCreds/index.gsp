@@ -5,6 +5,6 @@
 	</head>
 	<body>
 		<h1>Prueba llamada a google</h1>
-		${object.getAuthToken()} 
+		${object.testCallout()} 
 	</body>
 </html>

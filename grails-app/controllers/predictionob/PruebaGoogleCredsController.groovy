@@ -3,6 +3,6 @@ package predictionob
 class PruebaGoogleCredsController {
 
      def index() {
-    	[ object: new GoogleAuthService() ]
+    	[ object: new BigMlPredictionAPIService() ]
 	 }
 }
