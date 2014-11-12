@@ -24,6 +24,7 @@ class BigMlPredictionAPIService {
 	static String SOURCE = 'source'
 	static String DATASET = 'dataset'
 	static String MODEL = 'model'
+	static String PREDICTION = 'prediction'
 
 
  	public static String getApiURL(){
@@ -65,11 +66,22 @@ class BigMlPredictionAPIService {
  		json.status.message
  	}
 
- 	public static String testCallout(){
+ 	public static String testCreateModel(){
  		String resource = "dataset/545fd19490a1e97e150009d9"
  		def json = createModel(resource)
  		print '1->>'+json.resource
  		print '2->>'+json.status.message
+ 		json
+ 	}
+
+ 	public static String testCallout(){
+ 		String resource = "model/5462a9d5c4063745130000d1"
+ 		def inputData = new JsonBuilder()
+ 		inputData  '000003' : 5.0 
+ 		def json = createPrediction(resource,inputData)
+ 		print '1->>'+json.resource
+ 		print '2->>'+json.status.message
+ 		print '3->>'+json.prediction
  		json
  	}
 
@@ -96,6 +108,13 @@ class BigMlPredictionAPIService {
  		def json = new JsonBuilder()
 		json  dataset : "$dataset" 
 		makeCallout(json.toString(),groovyx.net.http.Method.POST,MODEL,groovyx.net.http.ContentType.JSON)
+ 	}
+
+ 	//creates Prediction from Model
+ 	public static Map createPrediction(String model, JsonBuilder inputData){
+ 		def json = new JsonBuilder()
+		json  model : "$model" , input_data : inputData.content
+		makeCallout(json.toString(),groovyx.net.http.Method.POST,PREDICTION,groovyx.net.http.ContentType.JSON)
  	}
 
 }
