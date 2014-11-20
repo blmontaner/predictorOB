@@ -13,7 +13,7 @@
           <div class="col-lg-12">
             <div class="page-header">
               <g:if test="${message != null}" >	
-              	${message}
+              	<p class="alert alert-dismissable alert-success">${message}</p>
               	</g:if>
         	</div>
             <div class="bs-component">
@@ -71,7 +71,7 @@
 			  width="600"
 			  height="450"
 			  frameborder="0" style="border:0;margin auto:0"
-			  src="https://www.google.com/maps/embed/v1/search?key=AIzaSyBaL9EOahkGyQznuEstxpKx3XKXGD0jCeY&q=${predictionPlace.predictionString},URUGUAY">
+			  src="https://www.google.com/maps/embed/v1/search?key=AIzaSyBaL9EOahkGyQznuEstxpKx3XKXGD0jCeY&q=${predictionPlace.predictionStringAddress},URUGUAY">
 			</iframe> 
 		<div>
 		</br>

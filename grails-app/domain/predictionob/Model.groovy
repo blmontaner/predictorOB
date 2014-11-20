@@ -80,7 +80,7 @@ class Model {
     }
 
     private void createModel(){
-        
+        println "********** modelStatus1 "+modelStatus
         if(dataSetStatus == STATUS_READY &&  modelStatus == STATUS_NONE){
             def jsonModel = BigMlPredictionAPIService.createModel(dataSetExternalId)
             modelExternalId = jsonModel.resource
@@ -90,12 +90,17 @@ class Model {
             println jsonModel
             println "********** createModel"
             println 'helo model -->'+jsonModel.status.code
+            println jsonModel.status.code == 1
             modelStatus = BigMlPredictionAPIService.getStatusFromResponse(jsonModel)
+            println "********** modelStatus2 "+modelStatus
         }
         if(modelStatus == STATUS_SUBMITED){
             def jsonResponse = BigMlPredictionAPIService.getResource(modelExternalId)
             modelStatus = BigMlPredictionAPIService.getStatusFromResponse(jsonResponse)
+            println 'helo model response --> '+jsonResponse
+            println 'helo model 3 --> '+jsonResponse.status.code
         }
+        println "********** modelStatus3 "+modelStatus
     }
 
     public Boolean isModelReadyForPredictions(){

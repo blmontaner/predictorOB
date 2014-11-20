@@ -157,7 +157,7 @@ class BigMlPredictionAPIService {
  	}
 
  	public static String getStatusFromResponse(def jsonSource){
- 		if(jsonSource.status.code == 1){
+ 		if(jsonSource.status.code != 5){
             return Model.STATUS_SUBMITED
         }
         if(jsonSource.status.code == 5){

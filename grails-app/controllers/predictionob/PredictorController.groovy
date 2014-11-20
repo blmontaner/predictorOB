@@ -12,20 +12,22 @@ class PredictorController {
 	 }
 
 	 def saveFile = {
+        def modelInstance
 	    def file = request.getFile('file')
         if(file.empty) {
             flash.message = "File cannot be empty"
         } else {
-            def modelInstance = new Model()
+            modelInstance = new Model()
             modelInstance.filename = file.originalFilename
             modelInstance.filedata = file.getBytes()
             println modelInstance
-            modelInstance.save()
-            modelInstance.uploadModelToPredictionAPI()
-            
+            modelInstance.uploadModelToPredictionAPI()            
         }
-
-        redirect(  controller: "predictor",  params: [message: 'El modelo estara pronto en unos instantes vuelve a intentar mas tarde'])
+        String m;
+        if(modelInstance.modelStatus != Model.STATUS_READY){
+            m = 'El modelo estara pronto en unos instantes vuelve a intentar mas tarde'
+        }
+        redirect(  controller: "predictor",  params: [message: m])
 
 	}
 

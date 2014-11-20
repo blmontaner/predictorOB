@@ -23,4 +23,8 @@ class Prediction {
     public Prediction(){
     	createdDate = new Date()
     }
+
+    public String getPredictionStringAddress(){
+    	return predictionString.replaceAll(' ','+')
+    }
 }
