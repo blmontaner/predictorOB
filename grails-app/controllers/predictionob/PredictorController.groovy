@@ -7,6 +7,10 @@ class PredictorController {
     
 
 	def index() {
+        for(Model m in Model.list()){
+            println " SourceStatus-> "+m.sourceStatus  +" dataSetStatus-> "+m.dataSetStatus +" modelStatus-> "+m.modelStatus  +" id-> "+m.id
+        }
+        
         [ date : new Date(),modelList : Model.list(), message : params.message, predictionPlace : params.predictionPlace != null ? Prediction.findById(params.predictionPlace) : new Prediction( "Universidad ORT Uruguay")]
         
 	 }
