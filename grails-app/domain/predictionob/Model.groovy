@@ -81,7 +81,7 @@ class Model {
 
     private void createModel(){
         println "********** modelStatus1 "+modelStatus
-        if(dataSetStatus == STATUS_READY &&  modelStatus == STATUS_NONE){
+        if(sourceStatus == STATUS_READY && dataSetStatus == STATUS_READY &&  modelStatus == STATUS_NONE){
             def jsonModel = BigMlPredictionAPIService.createModel(dataSetExternalId)
             modelExternalId = jsonModel.resource
             println jsonModel.status.message
