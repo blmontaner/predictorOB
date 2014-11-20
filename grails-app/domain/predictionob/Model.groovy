@@ -99,6 +99,7 @@ class Model {
             modelStatus = BigMlPredictionAPIService.getStatusFromResponse(jsonResponse)
             println 'helo model response --> '+jsonResponse
             println 'helo model 3 --> '+jsonResponse.status.code
+            this.save()
         }
         println "********** modelStatus3 "+modelStatus
     }

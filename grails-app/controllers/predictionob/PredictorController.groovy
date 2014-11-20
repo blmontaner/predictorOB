@@ -5,20 +5,20 @@ class PredictorController {
     Date date
     Prediction predictionPlace
     String processingMessage 
-    
+    Boolean proccesing = false
 
 	def index() {
 
         for(Model m in Model.list()){
             println " SourceStatus-> "+m.sourceStatus  +" dataSetStatus-> "+m.dataSetStatus +" modelStatus-> "+m.modelStatus  +" id-> "+m.id
-            Boolean proccesing = false
-            if(m.sourceStatus != STATUS_READY ||  m.dataSetStatus != STATUS_READY || m.modelStatus != STATUS_READY ){
+            
+            if(Model.list().size()>0 && (m.sourceStatus != Model.STATUS_READY ||  m.dataSetStatus != Model.STATUS_READY || m.modelStatus != Model.STATUS_READY )){
                 proccesing = true
             }
 
         }
         if(proccesing){
-             processingMessage = "Se estan procesando algunos modelos... "
+             processingMessage = "Se estan procesando modelos... "
         }
         
         [ date : new Date(),modelList : Model.list(), message : params.message, processingMessage: processingMessage, predictionPlace : params.predictionPlace != null ? Prediction.findById(params.predictionPlace) : new Prediction( "Universidad ORT Uruguay")]
@@ -47,14 +47,11 @@ class PredictorController {
 
     def predict(){
         long modelId = params.modelId.toLong()
-        Date date = params.date
-        println " date--->"+ date
-        println " modelId--->"+ modelId
-        
+        Date date = params.date                
         Model m = Model.findById(modelId)
         println m.id +' '+ m.filename 
         Prediction p = m.makePrediction(date)
-        println '=====>>'+p
+        
         redirect( controller: "predictor",  params: [predictionPlace: p.id])
 
     }
