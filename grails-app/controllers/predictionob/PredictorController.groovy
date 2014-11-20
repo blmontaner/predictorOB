@@ -4,14 +4,24 @@ class PredictorController {
 	
     Date date
     Prediction predictionPlace
+    String processingMessage 
     
 
 	def index() {
+
         for(Model m in Model.list()){
             println " SourceStatus-> "+m.sourceStatus  +" dataSetStatus-> "+m.dataSetStatus +" modelStatus-> "+m.modelStatus  +" id-> "+m.id
+            Boolean proccesing = false
+            if(m.sourceStatus != STATUS_READY ||  m.dataSetStatus != STATUS_READY || m.modelStatus != STATUS_READY ){
+                proccesing = true
+            }
+
+        }
+        if(proccesing){
+             processingMessage = "Se estan procesando algunos modelos... "
         }
         
-        [ date : new Date(),modelList : Model.list(), message : params.message, predictionPlace : params.predictionPlace != null ? Prediction.findById(params.predictionPlace) : new Prediction( "Universidad ORT Uruguay")]
+        [ date : new Date(),modelList : Model.list(), message : params.message, processingMessage: processingMessage, predictionPlace : params.predictionPlace != null ? Prediction.findById(params.predictionPlace) : new Prediction( "Universidad ORT Uruguay")]
         
 	 }
 

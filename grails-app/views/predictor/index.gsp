@@ -12,9 +12,13 @@
 		<div class="row">
           <div class="col-lg-12">
             <div class="page-header">
-              <g:if test="${message != null}" >	
-              	<p class="alert alert-dismissable alert-success">${message}</p>
+              	<g:if test="${message != null}" >	
+              		<p class="alert alert-dismissable alert-success">${message}</p>
               	</g:if>
+              	<g:if test="${processingMessage != null}" >	
+              		<p class="alert alert-dismissable alert-info">${processingMessage}</p>
+              	</g:if>
+              	
         	</div>
             <div class="bs-component">
               <div class="jumbotron">
