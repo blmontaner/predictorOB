@@ -23,7 +23,7 @@ class BigMlPredictionAPIServiceSpec extends Specification {
     	given:
     		def service = new BigMlPredictionAPIService ();
     	expect:
-    		service.getApiURLAuthenticated('source') == EXPECTED_FULL_AUTH_API_URL
+    		service.getApiURLAuthenticated('source') == EXPECTED_FULL_AUTH_API_URL    
     }
 
 

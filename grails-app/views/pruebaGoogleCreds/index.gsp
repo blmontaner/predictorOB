@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title> Prueba de credenciales</title>
+		<title> Predictor </title>
 	</head>
 	<body>
-		<h1>Prueba llamada a google</h1>
+		<h1>Predictor</h1>
 		${object.testCallout()} 
 	</body>
 </html>

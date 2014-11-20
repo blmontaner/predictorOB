@@ -48,17 +48,27 @@ grails.project.dependency.resolution = {
 
     dependencies {
         // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes e.g.
-        // runtime 'mysql:mysql-connector-java:5.1.27'
+        runtime 'mysql:mysql-connector-java:5.1.27'
+
+        //runtime 'org.codehaus.groovy.modules.http-builder:http-builder:0.7.2'
+        //runtime 'org.apache.httpcomponents:httpclient:4.3.5'
+        //runtime 'org.apache.httpcomponents:httpmime:4.3.5'
+
+
         // runtime 'org.postgresql:postgresql:9.3-1100-jdbc41'
         test "org.grails:grails-datastore-test-support:1.0-grails-2.3"
 
         runtime 'postgresql:postgresql:8.4-702.jdbc3'
+
+        //untime 'mysql:mysql-connector-java:5.1.18'
 
         runtime('org.codehaus.groovy.modules.http-builder:http-builder:0.5.1') {
             excludes 'xalan'
             excludes 'xml-apis'
             excludes 'groovy'
         }
+        compile 'org.apache.httpcomponents:httpcore:4.3.3'
+        compile 'org.apache.httpcomponents:httpmime:4.3.6'
         
     }
 
