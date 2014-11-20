@@ -116,6 +116,7 @@ class Model {
         def inputData = new JsonBuilder()
         inputData  '000000-1' : date[Calendar.MONTH],  '000000-2' : date[Calendar.DATE], '000000-3' : date[Calendar.DAY_OF_WEEK], '000000-4' : date[Calendar.HOUR_OF_DAY],  '000000-5' : date[Calendar.MINUTE]
         def jsonModel = BigMlPredictionAPIService.createPrediction(modelExternalId, inputData)
+        println jsonModel
         p.externalId = jsonModel.resource
         p.predictionString = jsonModel.prediction.'000001'
         p.willHappen = date;

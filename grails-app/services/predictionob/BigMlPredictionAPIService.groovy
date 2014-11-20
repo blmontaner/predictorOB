@@ -151,9 +151,11 @@ class BigMlPredictionAPIService {
 
  	//creates Prediction from Model
  	public static Map createPrediction(String model, JsonBuilder inputData){
- 		def json = new JsonBuilder()
-		json  model : "$model" , input_data : inputData.content
-		makeCallout(json.toString(),groovyx.net.http.Method.POST,PREDICTION,groovyx.net.http.ContentType.JSON)
+ 		if(model != null){
+	 		def json = new JsonBuilder()
+			json  model : "$model" , input_data : inputData.content
+			makeCallout(json.toString(),groovyx.net.http.Method.POST,PREDICTION,groovyx.net.http.ContentType.JSON)
+		}
  	}
 
  	public static String getStatusFromResponse(def jsonSource){
