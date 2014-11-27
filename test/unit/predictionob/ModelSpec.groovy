@@ -15,6 +15,6 @@ class ModelSpec extends Specification {
     def cleanup() {
     }
 
-    void "test something"() {
+    void "test model update"() {
     }
 }
